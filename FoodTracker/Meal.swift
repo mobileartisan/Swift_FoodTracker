@@ -27,7 +27,7 @@ class Meal : NSObject, NSCoding {
     }
     
     // MARK: Initialization
-    init?(name: String, photo: UIImage?, rating: Int?) {
+    init?(name: String, photo: UIImage?, rating: Int) {
         guard !name.isEmpty else {
             return nil
         }
@@ -54,7 +54,7 @@ class Meal : NSObject, NSCoding {
             return nil
         }
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
-        let rating = aDecoder.decodeObject(forKey: PropertyKey.rating) as? Int
+        let rating = aDecoder.decodeInteger(forKey: PropertyKey.rating)
         
         self.init(name: name, photo: photo, rating: rating)
     }
